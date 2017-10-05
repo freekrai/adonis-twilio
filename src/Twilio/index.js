@@ -6,7 +6,7 @@ class TwilioContainer {
     const Twilio = require('twilio')
 
     this.config  = Config
-	this.twilio = new twilio( this.config.get('twilio.accountSid'),this.config.get('twilio.authToken') );
+	this.twilio = new Twilio( this.config.get('twilio.accountSid'),this.config.get('twilio.authToken') );
 	this.fromNumber = this.config.get('twilio.fromNumber');
     this._extending()
   }
