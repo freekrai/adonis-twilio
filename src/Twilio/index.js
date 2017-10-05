@@ -6,7 +6,7 @@ class TwilioContainer {
     const Twilio = require('twilio')
 
     this.config  = Config
-    this.twilio  = new Twilio.RestClient(this.config.get('twilio.accountSid'), this.config.get('twilio.authToken'));
+	this.twilio = new twilio( this.config.get('twilio.accountSid'),this.config.get('twilio.authToken') );
 	this.fromNumber = this.config.get('twilio.fromNumber');
     this._extending()
   }
@@ -33,7 +33,7 @@ class TwilioContainer {
         payload.mediaUrl = media
       }
 
-      return this.twilio.messages.post(payload, callback)
+      return this.twilio.messages.create(payload, callback)
     }
 
     /**
@@ -44,9 +44,10 @@ class TwilioContainer {
         throw new Error('Body must be string.')
       }
 
-      return this.twilio.makeCall(
+      return this.twilio.calls.create(
         this._generatePayload({
           to: number,
+		  from: this.fromNumber,
           url: url
         }), callback)
     }
