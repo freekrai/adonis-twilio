@@ -7,7 +7,7 @@ class TwilioContainer {
 
     this.config  = Config
     this.twilio  = new Twilio.RestClient(this.config.get('twilio.accountSid'), this.config.get('twilio.authToken'));
-	this.fromNumber = this.config('twilio.fromNumber');
+	this.fromNumber = this.config.get('twilio.fromNumber');
     this._extending()
   }
 
