@@ -23,8 +23,7 @@ class TwilioContainer {
 
       let payload = this._generatePayload({
         to: number,
-		from: this.fromNumber,
-		from:
+        from: this.fromNumber,
         body: body
       })
 
